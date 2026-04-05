@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>¿Quién soy y por qué lo soy?</title>
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: #eef0f6;
+  color: #2c2c2c;
+  transition: 0.3s ease;
+}
+
+header {
+  background: linear-gradient(135deg, #5b2e90, #7a4bd9);
+  padding: 20px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav {
+  background: white;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  border-bottom: 1px solid #ddd;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+nav a {
+  cursor: pointer;
+  text-decoration: none;
+  color: #5b2e90;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: #7a4bd9;
+}
+
+.page {
+  display: none;
+  max-width: 950px;
+  margin: 30px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+.page.active {
+  display: block;
+}
+
+h2 {
+  color: #5b2e90;
+  margin-top: 0;
+  letter-spacing: 0.5px;
+}
+
+.foto {
+  width: 320px;
+  border-radius: 12px;
+  margin: 20px 0;
+  display: block;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.back-btn {
+  margin-top: 25px;
+  display: inline-block;
+  padding: 12px 20px;
+  background: #5b2e90;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.back-btn:hover {
+  background: #7a4bd9;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #5b2e90;
+  color: white;
+  margin-top: 80px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+.balonmano-box {
+  background: linear-gradient(135deg, #f6f1ff, #ffffff);
+  border-left: 6px solid #7a4bd9;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  margin: 30px 0;
+}
+
+.balonmano-box p {
+  line-height: 1.7;
+  margin-bottom: 18px;
+  font-size: 1.05rem;
+}
+
+.balonmano-box .quote {
+  background: #ede3ff;
+  padding: 18px;
+  border-radius: 12px;
+  font-style: italic;
+  color: #5b2e90;
+  font-weight: 600;
+  margin: 25px 0;
+  text-align: center;
+}
+
+.balonmano-box .filosofo {
+  background: #f9f6ff;
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin: 15px 0;
+  border-left: 4px solid #5b2e90;
+}
+
+.balonmano-box h4 {
+  margin-top: 30px;
+  color: #5b2e90;
+  letter-spacing: 0.5px;
+}
+.flamenco-box {
+  background: linear-gradient(135deg, #f6f1ff, #ffffff);
+  border-left: 6px solid #7a4bd9;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  margin: 30px 0;
+}
+
+.flamenco-box p {
+  line-height: 1.7;
+  margin-bottom: 18px;
+  font-size: 1.05rem;
+}
+
+.flamenco-box .quote {
+  background: #ede3ff;
+  padding: 18px;
+  border-radius: 12px;
+  font-style: italic;
+  color: #5b2e90;
+  font-weight: 600;
+  margin: 25px 0;
+  text-align: center;
+}
+
+.flamenco-box .filosofo {
+  background: #f9f6ff;
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin: 20px 0;
+  border-left: 4px solid #5b2e90;
+}
+
+.estudios-box {
+  background: linear-gradient(135deg, #f6f1ff, #ffffff);
+  border-left: 6px solid #7a4bd9;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  margin: 30px 0;
+}
+
+.estudios-box p {
+  line-height: 1.7;
+  margin-bottom: 18px;
+  font-size: 1.05rem;
+}
+
+.estudios-box .quote {
+  background: #ede3ff;
+  padding: 18px;
+  border-radius: 12px;
+  font-style: italic;
+  color: #5b2e90;
+  font-weight: 600;
+  margin: 25px 0;
+  text-align: center;
+}
+
+.estudios-box .filosofo {
+  background: #f9f6ff;
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin: 20px 0;
+  border-left: 4px solid #5b2e90;
+}
+/* Títulos de Experiencias centrados y en morado */
+#experiencias h3 {
+  text-align: center;
+  color: #5b2e90;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  margin-top: 50px;
+  margin-bottom: 25px;
+}
+
+</style>
+
+<script>
+function openPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
+</head>
+
+<body>
+<header>
+  <h1>¿Quién soy y por qué lo soy?</h1>
+  <p style="font-size:1.2rem; font-style:italic; opacity:0.85; margin-top:10px;">
+    “Cada experiencia me ha formado, cada elección me define.”
+  </p>
+</header>
+
+<nav>
+  <a onclick="openPage('inicio')">Inicio</a>
+  <a onclick="openPage('bio')">Podcast</a>
+  <a onclick="openPage('experiencias')">Experiencias</a>
+  <a onclick="openPage('amor')">Amor</a>
+  <a onclick="openPage('futuro')">Futuro</a>
+  <a onclick="openPage('reflexiones')">Libro</a>
+
+</nav>
+
+<!-- INICIO -->
+<section class="page active" id="inicio" style="padding: 10px 10px; background: #f3e9ff;">
+  <div style="text-align:center; padding: 10px 5px;height: 44vh;">
+    <br> <br> <br>
+    <h2 style="font-size:1.9rem; color:#5b2e90; margin-bottom:20px;">Bienvenida</h2>
+
+    <div style="
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
+      margin-bottom:20px;
+    ">
+      <img src="images/pequeña.jpg"
+        style="width:170px; height:170px; object-fit:cover; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.12); transform: rotate(-2deg);" />
+      <span style="font-size:2rem; color:#5b2e90; font-weight:bold;">➜</span>
+      <img src="images/grande.jpg"
+        style="width:170px; height:170px; object-fit:cover; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.12); transform: rotate(2deg);" />
+    </div>
+
+    <p style="font-size:1.1rem; color:#5b2e90; font-weight:600; opacity:0.9; margin:0;">
+      De dónde vengo · Quién soy · A dónde voy
+    </p>
+  </div>
+</section>
+
+<!-- PODCAST -->
+<section class="page" id="bio">
+  <h2>Podcast</h2>
+
+  <div class="balonmano-box">
+
+    <p>
+      En este podcast no cuento mi vida como una simple historia, sino que la cuestiono.
+      Me planteo si soy realmente quien quiero ser o si soy el resultado de las circunstancias.
+    </p>
+
+    <div class="quote">
+      “¿Soy quien quiero ser… o quien las circunstancias han hecho de mí?”
+    </div>
+
+    <h4>Escucha mi reflexión</h4>
+
+    <audio controls style="width:100%; margin:20px 0;">
+      <source src="podcast/podcast.mp4" type="audio/mpeg" />
+    </audio>
+
+
+    <p>
+      A lo largo del podcast intento responder a través de diferentes partes de mi vida:
+      los estudios, el deporte, el flamenco, el amor y el futuro.
+    </p>
+
+    <ul style="line-height:1.8; font-size:1.05rem;">
+      <li>¿Estoy estudiando lo que quiero o lo que esperan de mí?</li>
+      <li>¿Soy inteligente o solo sé adaptarme a un sistema?</li>
+      <li>¿Quién soy cuando no juego al balonmano?</li>
+      <li>¿El flamenco me define o me ayuda a entenderme?</li>
+      <li>¿Sé amar sin perderme a mí misma?</li>
+      <li>¿Estoy viviendo o solo preparándome para vivir?</li>
+    </ul>
+
+    <div class="quote">
+      “Tal vez hacerse las preguntas correctas ya es una forma de empezar a encontrar respuestas.”
+    </div>
+
+    <p>
+      Después de todo, puede que aún no tenga una respuesta clara sobre quién soy,
+      pero sí tengo algo importante: la capacidad de cuestionarme.
+    </p>
+
+    <p>
+      Este podcast representa ese proceso de búsqueda, donde entenderme no es
+      encontrar una respuesta definitiva, sino seguir haciéndome preguntas.
+    </p>
+
+    <div class="quote">
+      “No tengo todas las respuestas, pero estoy empezando a hacerme las preguntas correctas.”
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCIAS -->
+<section class="page" id="experiencias">
+  <h2>Mis Experiencias</h2>
+  <h3>Flamenco</h3>
+
+<div class="flamenco-box">
+
+  <p>
+    El flamenco ha sido una parte esencial de mi vida desde que tenía apenas tres años.
+    Desde muy pequeña, el baile se convirtió en una forma de expresión que iba más allá
+    del movimiento: era una manera de comunicar emociones, sentimientos y de sentirme libre.
+  </p>
+
+  <p>
+    A lo largo de los años, el esfuerzo, la constancia y la disciplina que exige este arte
+    formaron parte de mi rutina diaria. Gracias a ello, no solo crecí como bailaora,
+    sino también como persona. Los trofeos que he conseguido no representan únicamente
+    premios, sino etapas de superación, sacrificio y pasión por el flamenco.
+  </p>
+
+  <p>
+    Sin embargo, mi trayectoria se vio interrumpida por una lesión en la rodilla que me
+    impidió continuar bailando como lo hacía antes. Aceptar esta situación no fue fácil,
+    ya que el flamenco no era solo una afición, sino una parte fundamental de mi identidad.
+  </p>
+
+  <div class="quote">
+    Aunque mi cuerpo tenga límites, el flamenco sigue siendo una forma de volver a mí.
+  </div>
+
+  <p>
+    A pesar de ello, el vínculo con el baile nunca desapareció. Aunque el dolor me impone
+    límites, a veces me pongo los tacones y bailo en casa, aunque sea durante unos minutos.
+    Esos pequeños momentos me permiten reconectar con lo que soy y con lo que el flamenco
+    sigue significando para mí.
+  </p>
+
+  <div class="filosofo">
+    <strong>Nietzsche</strong><br>
+    “Solo creería en un dios que supiera bailar”, destacando el movimiento como símbolo
+    de vitalidad, libertad y afirmación de la vida.
+  </div>
+
+  <p>
+    Me siento identificada con esta idea, ya que, aunque mi cuerpo esté marcado por el dolor,
+    mi espíritu sigue unido al baile. El flamenco continúa siendo una fuente de fuerza
+    interior y una forma de resistencia frente a las dificultades.
+  </p>
+<div style="text-align:center;">
+  <img src="images/flamenco.jpg" class="foto" style="display:block; margin:auto;"/>
+</div>
+</div>
+
+<h3>Balonmano</h3>
+
+<div class="balonmano-box">
+
+  <p>
+    El balonmano ha significado y significa para mí, 
+    no solo como un deporte, sino como una experiencia que ha marcado mi forma de pensar, 
+    de sentir y de enfrentar las dificultades.
+  </p>
+
+  <p>
+    Para mí, el balonmano siempre ha sido mucho más que entrenar o jugar partidos. 
+    Ha sido compañerismo, esfuerzo y unión con mis amigas. En la pista aprendí lo que 
+    significa confiar en los demás, apoyarnos como equipo y luchar juntas por un mismo objetivo.
+    El balonmano me hacía sentir fuerte, activa y parte de algo importante.
+  </p>
+
+  <p>
+    Todo cambió el día que me lesioné la rodilla en un partido en Málaga. 
+    Recuerdo que no tenía muchas ganas de ir, como si algo dentro de mí me avisara, 
+    pero aun así fui. En ese partido me rompí el menisco y el ligamento cruzado, 
+    y de un momento a otro tuve que parar por completo.
+  </p>
+
+  <div class="quote">
+    “¿Quién soy si no puedo jugar? ¿Qué queda de mí sin el balonmano?”
+  </div>
+
+  <p>
+    A partir de ahí comenzó una etapa muy dura. Por mi edad, solo pudieron operarme el menisco,
+    así que tuve que convivir con el cruzado roto. El balonmano desapareció de mi rutina
+    y con él una parte muy importante de mi identidad.
+  </p>
+
+  <div class="filosofo">
+    <strong>Elisabeth Kübler-Ross</strong><br>
+    Pasé por todas las fases del duelo: negación, enfado, esperanza y tristeza,
+    al comprender que la recuperación iba a ser larga.
+  </div>
+
+  <div class="filosofo">
+    <strong>Schopenhauer</strong><br>
+    Entendí que el dolor es parte inevitable de la vida y que desear es sufrir.
+    Mi deseo de volver a jugar se convertía muchas veces en frustración.
+  </div>
+
+  <div class="filosofo">
+    <strong>Viktor Frankl</strong><br>
+    Aprendí que el ser humano puede soportar cualquier sufrimiento si encuentra un sentido.
+    El mío fue no rendirme y entender que mi valor no dependía solo del balonmano.
+  </div>
+
+  <div class="filosofo">
+    <strong>Nietzsche</strong><br>
+    “Lo que no me mata me hace más fuerte”. La lesión no me destruyó,
+    me hizo más consciente y más fuerte mentalmente.
+  </div>
+
+  <div class="filosofo">
+    <strong>Platón y los estoicos</strong><br>
+    Aprendí a aceptar mi cuerpo con sus límites y a vivir en armonía con él,
+    sin dejar que eso me impida seguir adelante.
+  </div>
+
+  <p>
+    Hoy sigo jugando con rodillera y con dolor en algunos momentos,
+    pero lo afronto de otra manera. He cambiado, he madurado
+    y he aprendido a valorar el balonmano desde otro lugar.
+  </p>
+
+  <div class="quote">
+    Heráclito decía que “todo fluye”, y ahora entiendo que cambiar no es perder,
+    sino transformarse.
+  </div>
+  <div>
+<div style="text-align:center;">
+  <img src="images/balonmano.jpg" class="foto" style="display:block; margin:auto;"/>
+</div>
+</div>
+</div>
+  <h3>Estudios</h3>
+
+<div class="estudios-box">
+
+  <p>
+    Durante este primer trimestre de segundo de Bachillerato, mi experiencia académica
+    ha sido más complicada de lo que esperaba. A pesar de haber mantenido la constancia
+    y la asistencia regular, considero que no he sabido estudiar de forma eficaz ni
+    organizarme correctamente ante la exigencia del curso.
+  </p>
+
+  <p>
+    Como consecuencia, me han quedado cinco asignaturas, lo cual ha supuesto un golpe
+    importante a nivel académico y personal.
+  </p>
+
+  <p>
+    Sin embargo, creo que es fundamental analizar esta situación con espíritu crítico
+    y asumir la responsabilidad de mis resultados. No ha sido una falta de interés ni
+    de compromiso, sino una metodología de estudio poco adecuada para el nivel y la carga
+    de trabajo que exige segundo de Bachillerato.
+  </p>
+
+  <div class="filosofo">
+    <strong>Kant</strong><br>
+    “La inteligencia de un individuo se mide por la cantidad de incertidumbres
+    que es capaz de soportar”.
+  </div>
+
+  <p>
+    Considero que este momento de dificultad forma parte del proceso de madurez académica.
+    A pesar de los resultados obtenidos, no voy a perder la motivación ni la voluntad de
+    mejorar, ya que el curso es largo y aún existen oportunidades para cambiar la situación.
+  </p>
+
+  <p>
+    Este trimestre ha sido un punto de inflexión y un aprendizaje. Por ello, voy a
+    replantear mi forma de estudiar, mejorar mi planificación del tiempo y buscar
+    técnicas de estudio más eficaces.
+  </p>
+
+  <p>
+    Así mismo, tengo la intención de acudir a la orientadora del centro para recibir
+    asesoramiento y apoyo que me ayuden a afrontar el resto del curso con mayor seguridad.
+  </p>
+
+  <div style="text-align:center;">
+  <img src="images/estudios.jpg" class="foto" style="display:block; margin:auto;"/>
+</div>
+</section>
+
+<!-- AMOR -->
+<section class="page" id="amor">
+  <h2>El significado del amor</h2>
+
+  <div class="flamenco-box">
+
+    <p>
+      Desde que era pequeña, el amor ha sido una parte esencial de mi vida. 
+      Con el tiempo he entendido que no es solo un sentimiento, sino una fuerza 
+      que nos impulsa y nos da razones para seguir adelante. Muchos filósofos han 
+      reflexionado sobre su importancia, pero es en la experiencia personal donde 
+      realmente se comprende su verdadero significado.
+    </p>
+
+    <h4>Familia</h4>
+
+    <p>
+      Mi historia comienza en el entorno familiar. Mi familia siempre me ha dado todo 
+      lo que he necesitado, tanto en lo material como en educación y valores. Aunque 
+      a veces discutamos, porque es algo normal en cualquier familia, eso no cambia 
+      lo fundamentales que son en mi vida.
+    </p>
+
+    <p>
+      He aprendido que querer a alguien no significa no tener diferencias, sino saber 
+      que, a pesar de ellas, esas personas forman parte de ti.
+    </p>
+
+    <div style="text-align:center;">
+      <img src="images/familia.jpeg" class="foto" style="display:block; margin:auto;" />
+    </div>
+
+
+    <h4>Pérdida y aprendizaje</h4>
+
+    <p>
+      Sin embargo, hubo un momento que marcó profundamente mi infancia: la pérdida de mi abuela. 
+      Ella fue un gran apoyo para mí y su ausencia dejó un vacío difícil de explicar.
+    </p>
+
+    <p>
+      Perderla me enseñó que el amor no desaparece cuando una persona se va, sino que permanece 
+      en el recuerdo y en todo lo que nos ha enseñado. Esa experiencia me hizo comprender el valor 
+      del tiempo compartido y la importancia de expresar lo que sentimos.
+    </p>
+
+    <div class="filosofo">
+      <strong>Como afirmaba Erich Fromm</strong><br>
+      Amar implica un compromiso verdadero con la vida de los demás.
+    </div>
+
+    <p>
+      Mi abuela representó para mí esa forma sincera y profunda de amar. Siempre ha sido y será 
+      una de las personas más importantes de mi vida. Espero que esté orgullosa de la persona en 
+      la que me estoy convirtiendo y que, allí donde esté, me siga acompañando y guiando con su recuerdo.
+    </p>
+
+    <div style="text-align:center;">
+      <img src="images/abuela.jpeg" class="foto" style="display:block; margin:auto;" />
+    </div>
+
+    <h4>Amistad</h4>
+
+    <p>
+      Con el paso de los años, también mis amigas y amigos han ocupado un lugar muy importante.
+    </p>
+
+    <div class="filosofo">
+      <strong>Aristóteles</strong><br>
+      “El amigo es otro yo”.
+    </div>
+
+    <p>
+      Con ellos comparto risas, momentos felices y experiencias que hacen la vida más ligera. 
+      He aprendido que es fundamental rodearse de personas que sumen, que aporten cosas positivas 
+      y que nos ayuden a crecer.
+    </p>
+
+    <div style="text-align:center;">
+      <img src="images/amigos.jpeg" class="foto" style="display:block; margin:auto;" />
+    </div>
+
+    <h4>Amor de pareja</h4>
+
+    <p>
+      No obstante, el amor que más ha transformado mi forma de ver la vida es el amor de pareja.
+    </p>
+
+    <div class="filosofo">
+      <strong>Platón</strong><br>
+      El amor es una fuerza que nos impulsa a superarnos y a buscar algo más grande que nosotros mismos.
+    </div>
+
+    <p>
+      En mi caso, mi pareja representa esa fuerza. Él no es solo alguien importante; es la persona 
+      que me da ganas de vivir, que me motiva a luchar por mis metas y que me recuerda cada día lo que valgo.
+    </p>
+
+    <p>
+      Con él he aprendido que amar es construir juntos, compartir sueños y sostenerse en los momentos 
+      difíciles. Su presencia me da tranquilidad y confianza. Cuando tengo dudas, me anima; cuando tengo miedo, 
+      me da fuerza; cuando soy feliz, comparte esa felicidad conmigo.
+    </p>
+
+    <p>
+      Es una parte esencial de mi estabilidad y de mi alegría. No se trata de depender, sino de elegir 
+      cada día caminar a su lado. Por eso puedo decir que es todo para mí, porque su amor da sentido y 
+      dirección a mi vida.
+    </p>
+
+    <div style="text-align:center;">
+      <img src="images/pareja.jpeg" class="foto" style="display:block; margin:auto;" />
+    </div>
+
+    <div class="quote">
+      Amar no es necesitar, es elegir cada día compartir la vida con alguien.
+    </div>
+
+  </div>
+</section>
+
+<!-- FUTURO -->
+<section class="page" id="futuro">
+  <h2>Mi Futuro</h2>
+
+  <div class="estudios-box">
+
+    <h4>La vida que quiero construir</h4>
+
+    <p>
+      Cuando pienso en mi futuro, no lo veo como algo lejano o imposible. Lo veo como una historia 
+      que estoy empezando a escribir ahora. Cada decisión que tomo hoy forma parte de la persona 
+      que quiero llegar a ser mañana.
+    </p>
+
+    <div class="quote">
+      “Mi futuro no está escrito, lo estoy construyendo con cada decisión.”
+    </div>
+
+    <p>
+      Desde hace tiempo tengo claro que me gustaría estudiar Pedagogía o Psicología. Siempre me ha 
+      gustado ayudar a las personas, escuchar sus problemas e intentar comprender lo que sienten. 
+      No lo hago por obligación, sino porque realmente me nace.
+    </p>
+
+    <p>
+      Además, me encanta estar con niños. Creo que en la infancia se construyen muchas de las cosas 
+      que marcan nuestra vida, y poder acompañar a alguien en esa etapa sería algo muy importante para mí.
+    </p>
+
+    <div class="filosofo">
+      <strong>Como decía Aristóteles</strong><br>
+      El ser humano encuentra su realización cuando desarrolla sus capacidades.
+    </div>
+
+    <h4>Metas personales</h4>
+
+    <p>
+      También tengo metas más personales, como sacarme el carnet de conducir. Puede parecer algo simple, 
+      pero para mí significa independencia, crecer y empezar a valerme por mí misma. Son pequeños pasos 
+      que me acercan a la vida adulta que quiero tener.
+    </p>
+
+    <h4>Amor y estabilidad</h4>
+
+    <p>
+      En el amor, deseo que mi relación siga creciendo de forma estable. Me gustaría formar una familia 
+      en el futuro, tener una casa, un trabajo fijo y una vida tranquila. No busco algo perfecto, sino 
+      algo seguro, basado en el respeto y el cariño. Yo quiero un amor que se elija todos los días, que sea fuerte y constante.
+    </p>
+
+    <p>
+      Pero mi futuro no es solo estabilidad. También quiero viajar mucho, conocer otros países, otras 
+      culturas y otras formas de ver el mundo. Viajar es aprender. Es crecer. Es salir de lo conocido.
+    </p>
+
+    <div class="filosofo">
+      <strong>Ortega y Gasset</strong><br>
+      “Yo soy yo y mi circunstancia”.
+    </div>
+
+    <p>
+      Por eso quiero que mis circunstancias estén llenas de experiencias que me hagan evolucionar.
+    </p>
+
+    <div class="quote">
+      “Quiero un futuro que no solo sea seguro, sino también lleno de experiencias que me hagan crecer.”
+    </div>
+
+  </div>
+</section>
+
+<!-- REFLEXIONES -->
+<section class="page" id="reflexiones">
+  <h2>Libro Siddhartha</h2>
+  <div class="balonmano-box">
+    <h4>Reflexión sobre “Siddhartha”</h4>
+
+    <p>
+      Cuando pienso en mi vida, me doy cuenta de que se parece mucho a la historia de Siddhartha. 
+      Él busca su camino, se equivoca, aprende y va descubriendo quién es a través de lo que vive.
+    </p>
+
+    <p>
+      Yo siento que me pasa algo muy parecido: no siempre las cosas salen como espero, pero cada 
+      experiencia, cada esfuerzo y cada decisión me enseñan algo sobre mí y sobre cómo quiero 
+      construir mi vida.
+    </p>
+
+    <div class="quote">
+      “No siempre sé qué camino seguir, pero cada experiencia me acerca a entender quién soy.”
+    </div>
+
+
+    <p>
+      Lo que más me llama la atención de Siddhartha es que la verdadera sabiduría no viene solo 
+      de leer o escuchar a otros, sino de vivir y experimentar por uno mismo.
+    </p>
+
+    <p>
+      Cada momento, incluso los que parecen difíciles o confusos, tiene valor porque nos ayuda 
+      a conocernos mejor. En mi vida he aprendido esto sin darme cuenta: cada reto me hace más 
+      fuerte, cada pasión que sigo me enseña constancia, y cada alegría que siento me recuerda 
+      por qué vale la pena seguir adelante.
+    </p>
+
+    <div class="quote">
+      “La vida no se entiende solo pensando, se entiende viviéndola.”
+    </div>
+
+    <p>
+      También me gusta cómo el libro muestra que la vida no es un camino recto ni hay una sola 
+      manera de hacer las cosas. No existe un plan perfecto que garantice que todo saldrá bien; 
+      lo importante es atreverse a vivir, intentar cosas nuevas, equivocarse y aprender de ello.
+    </p>
+
+    <p>
+      Creo que eso se refleja mucho en mi propia vida: no siempre sé qué va a pasar, pero intento 
+      aprovechar cada experiencia y aprender de ella, sin presionarme ni esperar que todo sea fácil.
+    </p>
+
+    <p>
+      Además, he aprendido que lo que vivimos nos transforma. No son solo los logros grandes, 
+      sino también las decisiones pequeñas, las personas que nos rodean y los momentos que nos 
+      hacen sentir o reflexionar.
+    </p>
+
+    <p>
+      Todo eso forma parte de lo que soy y de la persona que quiero ser. Igual que Siddhartha, 
+      entiendo que cada experiencia, cada paso, incluso los más simples, son importantes para 
+      crecer y construir mi propio camino.
+    </p>
+
+    <div class="quote">
+      “Cada experiencia, por pequeña que sea, forma parte de quién soy.”
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  © AITANA HEREDIA BREA
+</footer>
+
+</body>
+</html>
